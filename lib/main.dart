@@ -5,6 +5,9 @@ void main() {
   runApp(MyApp());
 }
 
+int userIdCounter = 0;
+int movieIdCounter = 0;
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -32,10 +35,11 @@ class MyAppState extends ChangeNotifier {
   // Métodos para usuarios
   void addUser(String login, String password) {
     users.add({
-      'id': DateTime.now().millisecondsSinceEpoch.toString(),
+      'id': userIdCounter.toString(),
       'login': login,
       'password': password,
     });
+    userIdCounter++;
     notifyListeners();
   }
 
@@ -59,11 +63,12 @@ class MyAppState extends ChangeNotifier {
   // Métodos para películas
   void addMovie(String nombre, String clasificacion, String director) {
     movies.add({
-      'id': DateTime.now().millisecondsSinceEpoch.toString(),
+      'id': movieIdCounter.toString(),
       'nombre': nombre,
       'clasificacion': clasificacion,
       'director': director,
     });
+    movieIdCounter++;
     notifyListeners();
   }
 
